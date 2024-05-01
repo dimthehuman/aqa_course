@@ -1,6 +1,6 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-from automation.tests_HW15.pages.base_page import BasePage
-from automation.tests_HW15.utils.by import by
+from pages.base_page import BasePage
+from utils.by import by
 
 
 class BooksPage(BasePage):

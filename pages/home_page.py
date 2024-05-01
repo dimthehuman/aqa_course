@@ -1,9 +1,9 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-from automation.tests_HW15.pages.base_page import BasePage
-from automation.tests_HW15.pages.alerts_page import AlertsPage
-from automation.tests_HW15.pages.forms_page import FormsPage
-from automation.tests_HW15.pages.books_page import BooksPage
-from automation.tests_HW15.utils.by import by
+from pages.base_page import BasePage
+from pages.alerts_page import AlertsPage
+from pages.forms_page import FormsPage
+from pages.books_page import BooksPage
+from utils.by import by
 
 
 class HomePage(BasePage):

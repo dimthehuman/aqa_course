@@ -1,5 +1,5 @@
 import pytest
-from automation.tests_HW15.pages.home_page import HomePage
+from pages.home_page import HomePage
 
 
 class TestDemoQA:
