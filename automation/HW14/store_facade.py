@@ -1,5 +1,5 @@
-from catalog import Catalog
-from phone import Phone
+from automation.HW14.catalog import Catalog
+from automation.HW14.phone import Phone
 
 
 class StoreFacade:

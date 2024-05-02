@@ -1,5 +1,5 @@
 import pytest
-from automation.tests_HW15.pages.home_page import HomePage
+from automation.HW15.pages.home_page import HomePage
 
 
 class TestDemoQA:
@@ -9,7 +9,8 @@ class TestDemoQA:
         home_page = HomePage(driver)
         form_page = home_page.click_on_forms_btn()
         form_page.open_practice_form()
-        assert form_page.form_submit()
+        form_page.form_submit()
+        assert form_page.check_if_form_modal_displayed()
 
     @pytest.mark.hw15
     def test_accept_alert(self, driver):
@@ -23,4 +24,5 @@ class TestDemoQA:
     def test_book_search(self, driver):
         home_page = HomePage(driver)
         books_page = home_page.click_on_books_btn()
-        assert books_page.search_for_book()
+        books_page.search_for_book()
+        assert books_page.check_if_book_displayed()
