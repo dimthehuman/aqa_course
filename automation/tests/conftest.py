@@ -1,5 +1,6 @@
 import pytest
-from store_facade import StoreFacade
+from automation.HW14.store_facade import StoreFacade
+from automation.HW15.utils.driver_factory import driver_factory
 
 
 @pytest.fixture(scope="class", autouse=True)
@@ -38,3 +39,22 @@ def store_facade_params(request):
     yield
     print('Func Tear down')
     del store.catalog.phones
+
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser",
+        action="store",
+        default="chrome",
+        help=""
+    )
+
+
+@pytest.fixture()
+def driver(pytestconfig):
+    browser = pytestconfig.getoption("browser")
+    driver = driver_factory(browser)
+    driver.maximize_window()
+    driver.get("https://demoqa.com/")
+    yield driver
+    driver.quit()
