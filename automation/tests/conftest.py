@@ -1,6 +1,10 @@
 import pytest
 from automation.HW14.store_facade import StoreFacade
 from automation.HW15.utils.driver_factory import driver_factory
+import random
+from automation.HW16.petstore_interface import pet_api
+from http.client import HTTPException
+
 
 
 @pytest.fixture(scope="class", autouse=True)
@@ -58,3 +62,35 @@ def driver(pytestconfig):
     driver.get("https://demoqa.com/")
     yield driver
     driver.quit()
+
+
+@pytest.fixture()
+def create_pet():
+    payload = {
+        "id": random.randint(0, 999),
+        "category": {
+            "id": 2,
+            "name": random.choice(["Apollo","Bandit","Cash","Dobby","Echo","Fuji","Goofy"])
+        },
+        "name": "rand",
+        "photoUrls": [
+            "https://www.google.com/"
+        ],
+        "tags": [
+            {
+                "id": 777,
+                "name": "test"
+            }
+        ],
+        "status": "test"
+    }
+    response = pet_api.create_pet(payload=payload)
+    return response.json()
+
+
+@pytest.fixture
+def clean_up_pet(create_pet):
+    yield
+    response = pet_api.delete_pet(pet_id=create_pet["id"])
+    if response.status_code != 200:
+        raise HTTPException(response.text)
