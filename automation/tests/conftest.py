@@ -70,7 +70,7 @@ def create_pet():
         "id": random.randint(0, 999),
         "category": {
             "id": 2,
-            "name": random.choice(["Apollo","Bandit","Cash","Dobby","Echo","Fuji","Goofy"])
+            "name": random.choice(["Apollo", "Bandit", "Cash", "Dobby", "Echo", "Fuji", "Goofy"])
         },
         "name": "rand",
         "photoUrls": [
@@ -84,8 +84,8 @@ def create_pet():
         ],
         "status": "test"
     }
-    response = pet_api.create_pet(payload=payload)
-    return response.json()
+
+    return payload
 
 
 @pytest.fixture
